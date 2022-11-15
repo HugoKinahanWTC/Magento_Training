@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Wtc\Film\Api\FilmRepositoryInterface"
+                type="Wtc\Film\Model\FilmRepository"/>
+    <preference for="Wtc\Film\Api\Data\FilmInterface"
+                type="Wtc\Film\Model\Film"/>
+    <preference for="Wtc\Film\Api\Data\FilmSearchResultInterface"
+                type="Wtc\Film\Model\FilmSearchResult"/>
+<!--    <preference for="Magento\Customer\Block\Form\Register"-->
+<!--                type="Wtc\Film\Model\" />-->
+
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="afterPriceTestPlugin"
+                type="Wtc\Film\Plugin\PricePlugin"
+                sortOrder="20"
+                disabled="false" />
+    </type>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="priceTestPlugin"
+                type="Unit1\HugoTestPlugin\Plugin\AfterTestPricePlugin"
+                sortOrder="10"
+                disabled="false" />
+    </type>
+
+    <virtualType name="CustomFilmLogFile"
+                 type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/film_debug.log
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="FilmLogger"
+                 type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">
+                    CustomFilmLogFile
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Wtc\Film\Observer\LogTwo">
+        <arguments>
+            <argument name="logger" xsi:type="object">
+                FilmLogger
+            </argument>
+        </arguments>
+    </type>
+    <type name="Wtc\Film\Observer\Log">
+        <arguments>
+            <argument name="logger" xsi:type="object">
+                FilmLogger
+            </argument>
+        </arguments>
+    </type>
+    <type name="Wtc\Film\Observer\LogOne">
+        <arguments>
+            <argument name="logger" xsi:type="object">
+                FilmLogger
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="wtc_film_film_listing_data_source"
+                      xsi:type="string">Wtc\Film\Model\ResourceModel\Film\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Wtc\Film\Model\ResourceModel\Film\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">film_list</argument>
+            <argument name="resourceModel" xsi:type="string">Wtc\Film\Model\ResourceModel\Film</argument>
+        </arguments>
+    </virtualType>
+
+</config>

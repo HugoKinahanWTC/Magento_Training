@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="chocolate_table" resource="default" engine="innodb"
+           comment="Chocolate Table">
+        <column xsi:type="int" name="chocolate_id" unsigned="true"
+                nullable="false"
+                identity="true"
+                comment="Chocolate ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="32"
+                default="simple" comment="Chocolate Name"/>
+        <column xsi:type="text" name="description" nullable="false"
+                comment="Chocolate Description"/>
+        <column xsi:type="decimal" name="rating" scale="2" precision="12"
+                unsigned="false" nullable="true"
+                comment="Chocolate Rating out of 10"/>
+        <column xsi:type="decimal" name="price" scale="2" precision="12"
+                unsigned="false" nullable="true" comment="Chocolate Price"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="chocolate_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="CHOCOLATE_NAME">
+            <column name="name"/>
+        </constraint>
+        <index referenceId="CHOCOLATE_PRICE" indexType="btree">
+            <column name="price"/>
+        </index>
+    </table>
+</schema>
+

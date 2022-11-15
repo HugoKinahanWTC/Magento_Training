@@ -1,0 +1,18 @@
+{
+    "chocolate_table": {
+        "column": {
+            "chocolate_id": true,
+            "name": true,
+            "description": true,
+            "rating": true,
+            "price": true
+        },
+        "index": {
+            "CHOCOLATE_TABLE_PRICE": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CHOCOLATE_TABLE_NAME": true
+        }
+    }
+}

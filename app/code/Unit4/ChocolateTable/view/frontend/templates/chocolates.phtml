@@ -1,0 +1,22 @@
+<h2>Chocolate Table</h2>
+
+<?php $chocolates = $this->getViewModel()->getAllChocolates(); ?>
+
+<div>
+    <?php foreach ($chocolates as $chocolate): ?>
+    <h4><?php echo $chocolate->getName(); ?></h4><br />
+        Description: <?php echo $chocolate->getDescription(); ?><br />
+        Price: £<?php echo $chocolate->getPrice(); ?><br />
+        Rating: <?php echo $chocolate->getRating(); ?>/10<br />
+    <?php endforeach; ?>
+</div>
+
+<h3>My Favourite Chocolate</h3>
+
+<?php $chocolate = $this->getViewModel()->getChocolate(3); ?>
+<div>
+    <h5><?= $chocolate->getName(); ?></h5>
+    Description: <?= $chocolate->getDescription(); ?><br />
+    Price: £<?= $chocolate->getPrice(); ?><br />
+    Rating: <?= $chocolate->getRating(); ?>/10<br />
+</div>

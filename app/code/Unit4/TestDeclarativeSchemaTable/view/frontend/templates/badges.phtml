@@ -1,0 +1,17 @@
+<h2>All Badges</h2>
+
+<?php $badges = $this->getViewModel()->getAllBadges(); ?>
+
+<?php foreach ($badges as $badge): ?>
+<div>
+    <h3><?php echo $badge->getName(); ?></h3><br />
+    Code: <?php echo $badge->getCode(); ?><br />
+    Price: <?php echo $badge->getPrice(); ?><br />
+</div>
+<?php endforeach; ?>
+
+<h2>First Badge</h2>
+
+<?php $badge = $this->getViewModel()->getBadge(1); ?>
+<?php echo $badge->getName() . ", " . $badge->getCode() . ", " .
+    $badge->getPrice(); ?>

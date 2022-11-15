@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Wtc_Film::films" title="Films"
+                          sortOrder="10" >
+                    <resource id="Wtc_Film::manage" title="Manage Films"
+                              sortOrder="50" />
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

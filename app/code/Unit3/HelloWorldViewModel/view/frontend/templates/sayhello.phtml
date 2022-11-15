@@ -1,0 +1,20 @@
+<h1><?php echo $block->getTitle(); ?></h1>
+
+<?php
+
+$viewModel = $block->getDataByKey('view_model');
+//$viewModel = $block->getViewModel();
+
+$categories = $viewModel->getCategories();
+
+?>
+
+<h2>Categories</h2>
+
+<?php foreach ($categories as $category): ?>
+    <li><?= $category ?></li>
+<?php endforeach; ?>
+
+<br>
+
+<?php var_dump($viewModel->getProductNameBySku("24-MB02")); ?>

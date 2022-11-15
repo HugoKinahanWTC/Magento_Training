@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Wtc_Film::films"
+             title="Films"
+             module="Wtc_Film"
+             sortOrder="51"
+             resource="Wtc_Film::films"/>
+        <add id="Wtc_Film::film"
+             title="Manage Films"
+             module="Wtc_Film"
+             sortOrder="10"
+             action="wtc_film/film/index"
+             resource="Wtc_Film::manage"
+             parent="Wtc_Film::films"/>
+        <add id="Wtc_Film::film_entity"
+             title="Entity Grid Films"
+             module="Wtc_Film"
+             sortOrder="20"
+             action="wtc_film/film/entity_grid"
+             resource="Wtc_Film::films"
+             parent="Wtc_Film::films"/>
+    </menu>
+</config>

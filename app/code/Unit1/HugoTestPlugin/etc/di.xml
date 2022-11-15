@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="priceTestPlugin"
+                type="Unit1\HugoTestPlugin\Plugin\AfterTestPricePlugin"
+                sortOrder="2"
+                disabled="false" />
+    </type>
+</config>
